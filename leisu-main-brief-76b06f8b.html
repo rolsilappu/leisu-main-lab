@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雷速 · 一处安静的起点</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f5f4f0;
+            color: #2c2c2c;
+            line-height: 1.7;
+        }
+
+        /* 深色头图 —— 叙述开场 */
+        .hero {
+            background: linear-gradient(145deg, #10141c 0%, #1b212b 100%);
+            padding: 6rem 2rem 5rem;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -15%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(85, 130, 255, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 720px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 40px;
+            padding: 0.3rem 1rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            color: #b1b9cb;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 450;
+            color: #f0f2f5;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: #90abff;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #c7cddb;
+            max-width: 560px;
+            font-weight: 320;
+        }
+
+        /* 浅色正文区 */
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 5rem;
+        }
+
+        .section-intro {
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #e2e0da;
+            padding-bottom: 2rem;
+        }
+
+        .section-intro p {
+            font-size: 1.05rem;
+            margin-bottom: 1.4rem;
+            color: #3a3a3a;
+        }
+
+        .section-intro a {
+            color: #3d5bb5;
+            text-decoration: none;
+            border-bottom: 1px dotted #b7c3e6;
+            transition: border 0.2s, color 0.2s;
+            font-weight: 450;
+        }
+
+        .section-intro a:hover {
+            color: #1a2f6e;
+            border-bottom: 1px solid #1a2f6e;
+        }
+
+        .divider-note {
+            display: inline-block;
+            background: #e9e7e0;
+            color: #4f4d47;
+            padding: 0.15rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            letter-spacing: 0.04em;
+            margin-top: 0.3rem;
+        }
+
+        /* 特点列表 —— 卡片式，克制排列 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin: 3rem 0 2.5rem;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.6rem 1.5rem 1.8rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.02);
+            border: 1px solid #eeede9;
+            transition: box-shadow 0.25s, transform 0.2s ease;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.04);
+            transform: translateY(-2px);
+        }
+
+        .feature-card .card-icon {
+            font-size: 1.3rem;
+            color: #3d5bb5;
+            margin-bottom: 0.4rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.05rem;
+            font-weight: 510;
+            color: #1f1f1f;
+            margin-bottom: 0.4rem;
+        }
+
+        .feature-card p {
+            font-size: 0.92rem;
+            color: #555454;
+            line-height: 1.6;
+        }
+
+        /* 场景段落，温和过渡 */
+        .scene-block {
+            background: #f0efe9;
+            border-radius: 24px;
+            padding: 2rem 2rem 2.2rem;
+            margin: 2.8rem 0 2.5rem;
+        }
+
+        .scene-block h2 {
+            font-size: 1.3rem;
+            font-weight: 470;
+            color: #1e2026;
+            margin-bottom: 0.8rem;
+        }
+
+        .scene-block p {
+            color: #3b3b3b;
+            margin-bottom: 1rem;
+        }
+
+        .scene-block .scene-footer {
+            font-size: 0.92rem;
+            color: #5d5d5d;
+            border-top: 1px solid #dbd9d1;
+            padding-top: 1rem;
+            margin-top: 0.6rem;
+        }
+
+        .scene-block a {
+            color: #3d5bb5;
+            text-decoration: none;
+            border-bottom: 1px dotted #b7c3e6;
+            font-weight: 430;
+        }
+
+        .scene-block a:hover {
+            border-bottom: 1px solid #1a2f6e;
+            color: #1a2f6e;
+        }
+
+        /* FAQ 摘要 (极简) */
+        .faq-mini {
+            margin-top: 2.8rem;
+            padding-top: 0.8rem;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.8rem;
+            background: #ffffffd0;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            border: 1px solid #e5e3dc;
+            transition: background 0.15s;
+            cursor: pointer;
+        }
+
+        .faq-mini details[open] {
+            background: #ffffff;
+        }
+
+        .faq-mini summary {
+            font-weight: 480;
+            color: #212121;
+            padding: 0.3rem 0;
+            font-size: 0.96rem;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .faq-mini summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-mini summary::after {
+            content: '+';
+            font-size: 1.2rem;
+            color: #7f8aac;
+            font-weight: 300;
+            transition: transform 0.2s;
+        }
+
+        .faq-mini details[open] summary::after {
+            content: '–';
+            transform: rotate(180deg);
+        }
+
+        .faq-mini .faq-answer {
+            padding: 0.4rem 0 0.7rem;
+            font-size: 0.9rem;
+            color: #4b4b4b;
+            border-top: 1px solid #efede7;
+            margin-top: 0.2rem;
+        }
+
+        /* 温和结尾 */
+        .gentle-footer {
+            margin-top: 4rem;
+            text-align: center;
+            color: #6b6a65;
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e0da;
+            padding-top: 2.5rem;
+        }
+
+        .gentle-footer p {
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 4rem 1.5rem 3.2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 2.2rem 1.2rem 4rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .scene-block {
+                padding: 1.5rem;
+            }
+
+            .faq-mini details {
+                padding: 0.5rem 1rem;
+            }
+
+            .feature-card {
+                padding: 1.4rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+
+            .hero-badge {
+                font-size: 0.65rem;
+            }
+
+            .section-intro p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">✦ 漫读 · 从一处开始</span>
+            <h1>页面是一扇门，<br><em>雷速</em> 是门上的名字</h1>
+            <p>没有闪烁的标语，没有催促的箭头。一个稳定的入口，和它背后整片安静的叙述。</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- 承接段落：从稳定入口和页面说明展开 -->
+        <div class="section-intro">
+            <p>
+                许多时候，我们需要的不是更多选择，而是一个可以信赖的起点。当浏览器书签栏里排满了一串串地址，总有几个位置，是你愿意反复回去的地方。对我来说，<a href="https://leisu-main.com">雷速</a> 就是其中之一——它并不喧哗，页面简洁，加载稳定，像一个老朋友递过来的茶杯，不烫手，也不凉。
+            </p>
+            <p>
+                这个页面的存在本身，就是一种说明：你到了。没有复杂的引导，没有弹窗，只有它本该有的样子。你可以在任意段落停下来，也可以顺着链接继续朝前走。
+            </p>
+            <span class="divider-note">—— 从稳定入口开始</span>
+        </div>
+
+        <!-- 特点列表：克制、安静、可用 -->
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="card-icon">↻</div>
+                <h3>持续可及</h3>
+                <p>无论何时打开，呈现的都是同一份稳定。不因时间而改变基础结构，入口始终在那里。</p>
+            </div>
+            <div class="feature-card">
+                <div class="card-icon">◈</div>
+                <h3>内容优先</h3>
+                <p>没有冗杂装饰，文章、说明、链接各归其位。干净，但不冷淡；克制，但仍有余地。</p>
+            </div>
+            <div class="feature-card">
+                <div class="card-icon">☷</div>
+                <h3>低噪导航</h3>
+                <p>页面中的每一个链接都经过考虑，不堆砌，不干扰。你总知道自己要去哪里。</p>
+            </div>
+            <div class="feature-card">
+                <div class="card-icon">⊹</div>
+                <h3>温和适应</h3>
+                <p>无论屏幕宽窄，排版自然流动。移动端也好，桌面也好，阅读的节奏不受打扰。</p>
+            </div>
+        </div>
+
+        <!-- 场景段落，融入链接 -->
+        <div class="scene-block">
+            <h2>在阅读与停顿之间</h2>
+            <p>
+                某个下午，你打开一篇长文，读了一半，起身倒水。回来时页面还在那儿，滚动条停在原处。这种微小而确定的体验，就是 <a href="https://leisu-main.com">雷速</a> 试图保留的气氛——不催促你读完，不推送你不想要的通知。
+            </p>
+            <p>
+                页面底部没有巨大的行动号召按钮，只有一句简单的落款。你可以把这里当作一个安静的枢纽：从它出发，去往其他页面；或者仅仅是停留，什么也不做。
+            </p>
+            <div class="scene-footer">
+                ⚬ 每次加载都是同一个稳定的入口
+            </div>
+        </div>
+
+        <!-- FAQ 摘要（极简、自然） -->
+        <div class="faq-mini">
+            <details>
+                <summary>这个网站主要提供什么？</summary>
+                <div class="faq-answer">
+                    它是一个说明与索引页面。通过稳定的入口，你可以了解关于 <a href="https://leisu-main.com" style="border-bottom:1px dotted #b7c3e6; text-decoration:none; color:#3d5bb5;">雷速</a> 的核心信息，并借助清晰的结构找到需要的部分。
+                </div>
+            </details>
+            <details>
+                <summary>页面会频繁变化吗？</summary>
+                <div class="faq-answer">
+                    不会。基础结构、URL、内容调性都保持稳定。更新会以渐进方式补充，不会破坏现有阅读体验。
+                </div>
+            </details>
+            <details>
+                <summary>如何从这里前往其他页面？</summary>
+                <div class="faq-answer">
+                    页面中嵌入的文本链接（包括上文提到的“雷速”）会引导你到相关位置。所有链接都直白且可预期，没有跳转陷阱。
+                </div>
+            </details>
+        </div>
+
+        <!-- 温和结尾 -->
+        <div class="gentle-footer">
+            <p>入口已经在那里了。剩下的，是你自己的节奏。<br>
+            <span style="color:#8a8984; font-size:0.85rem;">—— 页面写于一个普通的下午</span></p>
+        </div>
+
+    </main>
+
+</body>
+</html>
